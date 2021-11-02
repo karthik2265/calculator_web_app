@@ -130,6 +130,7 @@ body {
 
 .theme-btn-container {
   margin-left: 0.8rem;
+  cursor: pointer;
 }
 
 .theme-btn {
@@ -159,10 +160,19 @@ body {
   width: 20%;
   border-radius: 100%;
   background-color: var(--red-key-background);
+  visibility: hidden;
+}
+
+.selection.theme-1 {
+  visibility: visible;
+}
+
+.selection.theme-2 {
+  visibility: visible;
 }
 
 .selection.theme-3 {
-  background-color: var(--pure-cyan);
+  visibility: visible;
 }
 
 .theme-btn-labels {
@@ -253,7 +263,7 @@ body {
   color: black;
 }
 
-.key.theme-2 {
+.key.theme-3 {
   background-color: var(--dark-violet);
   color: var(--light-yellow);
 }
@@ -277,6 +287,11 @@ body {
 }
 
 .key--calculate.theme-1 {
+  background-color: var(--red-key-background);
+  color: white;
+}
+
+.key--calculate.theme-2 {
   background-color: var(--red-key-background);
   color: white;
 }
