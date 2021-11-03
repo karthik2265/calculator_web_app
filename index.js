@@ -1,5 +1,6 @@
 const themeBtn = document.querySelector(".theme-btn-container");
 const themeIndicatorElements = document.querySelectorAll(".selection");
+const displayPlace = document.querySelector(".calc-container--result span");
 // theme related elements
 const themeBtnDiv = document.querySelector(".theme-btn");
 const mainContainer = document.querySelector(".container");
@@ -43,6 +44,7 @@ function changeTheme() {
     themeBtn.dataset.theme = "3";
     class_to_add = "theme-3";
     themeIndicatorElements[2].classList.add("theme-3");
+    themeIndicatorElements[2].style.backgroundColor = "hsl(176, 100%, 44%)";
   } else if (currentTheme === "3") {
     themeBtn.dataset.theme = "1";
     class_to_add = "theme-1";
@@ -66,3 +68,33 @@ function changeTheme() {
 }
 
 themeBtn.addEventListener("click", changeTheme);
+
+let data = "";
+function updateDisplay(e) {
+  let key = e.target;
+  let value = key.dataset.value;
+
+  if (data == "0") {
+    data = "";
+  }
+
+  if (value === "del") {
+    data = data.slice(0, data.length - 1);
+  } else if (value === "reset") {
+    data = "";
+  } else if (value === "calc") {
+    data = data.replace("x", "*");
+    data = eval(data).toString();
+  } else {
+    if (value === "*") {
+      value = "x";
+    }
+    data += value;
+  }
+
+  displayPlace.textContent = data;
+}
+
+keys.forEach(function (key) {
+  key.addEventListener("click", updateDisplay);
+});
